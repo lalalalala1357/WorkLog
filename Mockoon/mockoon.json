@@ -1,0 +1,1187 @@
+{
+  "uuid": "84bcc9aa-077d-46b7-93e1-316bee45ddc2",
+  "lastMigration": 33,
+  "name": "WorkLog API Mock Environment",
+  "endpointPrefix": "api",
+  "latency": 200,
+  "port": 3001,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "9fa469d1-34f8-4c3d-b31e-e40673863a2b",
+      "name": "認證",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "6837fb3b-e5bd-4e42-8388-158fce446227"
+        }
+      ]
+    },
+    {
+      "uuid": "ce073eca-3c00-4a12-aafd-b52e6126730b",
+      "name": "工作日誌",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "24436b9e-e4ed-46f4-bf79-76d5910d29f7"
+        },
+        {
+          "type": "route",
+          "uuid": "7aca4133-329b-40b5-96a5-ca2ebd556ea4"
+        },
+        {
+          "type": "route",
+          "uuid": "de32c786-63b5-42a0-887a-3d0398886b5a"
+        },
+        {
+          "type": "route",
+          "uuid": "5e1337c7-79b1-46f4-8465-3da4aa1dec46"
+        },
+        {
+          "type": "route",
+          "uuid": "56ceb319-0b5a-4b3e-afab-36a0f2b79bd0"
+        },
+        {
+          "type": "route",
+          "uuid": "0991cf07-9faf-4d20-9a7e-6859a8335f64"
+        },
+        {
+          "type": "route",
+          "uuid": "a2fb398f-3648-458b-b8ee-67e1e2c8fc04"
+        }
+      ]
+    },
+    {
+      "uuid": "7b706948-eed0-4716-a17b-8226640839a0",
+      "name": "工作細項",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "d3fdfaef-4712-474f-a365-cb63f8708786"
+        },
+        {
+          "type": "route",
+          "uuid": "db378054-f75d-4bf5-b5f6-3df0978f32dc"
+        },
+        {
+          "type": "route",
+          "uuid": "d0b9fb85-eac3-4caa-b987-fa73da2f280f"
+        }
+      ]
+    },
+    {
+      "uuid": "48dc72bb-9fa0-4f49-8fd7-7c28f5faf23b",
+      "name": "附件管理",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "01334884-d324-4ae0-9c5c-e2e950ca0e23"
+        },
+        {
+          "type": "route",
+          "uuid": "a09f8dd2-c016-490b-916f-fe7fc0901925"
+        },
+        {
+          "type": "route",
+          "uuid": "f5e89416-d7b4-4b90-ac18-35210640a7d5"
+        }
+      ]
+    },
+    {
+      "uuid": "c7eb4aa1-7121-4ef8-8f75-fce15623b3c2",
+      "name": "基礎資訊",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "ba7784dd-ba9d-4735-ac67-3f0f610d2909"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "6837fb3b-e5bd-4e42-8388-158fce446227",
+      "type": "http",
+      "documentation": "取得目前登入者的本地員工資料（若查無則自動 JIT Provisioning）",
+      "method": "get",
+      "endpoint": "auth/me",
+      "responses": [
+        {
+          "uuid": "ccda5113-35da-4418-842b-a9b235a5906e",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"3f1b8b1a-2b3e-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"employeeNo\": \"G033\",\n    \"name\": \"王小明\",\n    \"email\": \"g033@ktgh.org.tw\",\n    \"department\": {\n      \"id\": \"8a2c1e10-1111-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"資訊部\",\n      \"code\": \"IT\"\n    },\n    \"isActive\": true\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 成功取得員工資料",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "24436b9e-e4ed-46f4-bf79-76d5910d29f7",
+      "type": "http",
+      "documentation": "取得我的日誌列表 (year, month 必填)",
+      "method": "get",
+      "endpoint": "worklogs",
+      "responses": [
+        {
+          "uuid": "19a0001a-3e15-4c31-9d4e-807405aa7d99",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"輸入資料有誤\",\n  \"errors\": [\n    {\n      \"field\": \"year\",\n      \"message\": \"年份為必填\"\n    },\n    {\n      \"field\": \"month\",\n      \"message\": \"月份為必填\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "400 - 缺必填參數 (year / month)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "year",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "month",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "29e92aeb-2525-4c4f-a7e8-e5ffc9779df5",
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607200002\",\n      \"logDate\": \"2026-07-20\",\n      \"status\": \"DRAFT\",\n      \"summary\": \"系統需求訪談\",\n      \"totalHours\": 4.5\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 僅過濾 DRAFT 狀態",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "status",
+              "value": "DRAFT",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ea4faeef-bd1d-40aa-b9dd-807d8dfb3b64",
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180001\",\n      \"logDate\": \"2026-07-18\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"月結報表撰寫\",\n      \"totalHours\": 8.0\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 僅過濾 SUBMITTED 狀態",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "status",
+              "value": "SUBMITTED",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4ae20cfa-133a-4467-932d-20ddcb10d8a5",
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607200002\",\n      \"logDate\": \"2026-07-20\",\n      \"status\": \"DRAFT\",\n      \"summary\": \"系統需求訪談\",\n      \"totalHours\": 4.5\n    },\n    {\n      \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180001\",\n      \"logDate\": \"2026-07-18\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"月結報表撰寫\",\n      \"totalHours\": 8.0\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 所有狀態 (預設回應)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "de32c786-63b5-42a0-887a-3d0398886b5a",
+      "type": "http",
+      "documentation": "新增日誌（草稿）",
+      "method": "post",
+      "endpoint": "worklogs",
+      "responses": [
+        {
+          "uuid": "9ddf5e61-a0c4-42b7-8735-ee1ea30c000f",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"logNo\": \"WD{{now 'YYYYMMDD'}}0003\",\n    \"logDate\": \"{{now 'YYYY-MM-DD'}}\",\n    \"shiftType\": null,\n    \"status\": \"DRAFT\",\n    \"selfRead\": false,\n    \"totalHours\": null,\n    \"submittedAt\": null,\n    \"createdAt\": \"{{now}}\",\n    \"updatedAt\": \"{{now}}\",\n    \"workItems\": []\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "201 - 成功建立草稿日誌",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "7aca4133-329b-40b5-96a5-ca2ebd556ea4",
+      "type": "http",
+      "documentation": "取得日誌統計資料（填寫率、草稿數、已送出數）",
+      "method": "get",
+      "endpoint": "worklogs/stats",
+      "responses": [
+        {
+          "uuid": "e51f9751-3dd1-4250-baa7-f10f9a7e90a7",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"year\": {{#if (query 'year')}}{{query 'year'}}{{else}}2026{{/if}},\n    \"month\": {{#if (query 'month')}}{{query 'month'}}{{else}}7{{/if}},\n    \"completionRate\": 50.0,\n    \"draftCount\": 1,\n    \"submittedCount\": 1,\n    \"totalLogs\": 2\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 統計資料成功回傳",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "5e1337c7-79b1-46f4-8465-3da4aa1dec46",
+      "type": "http",
+      "documentation": "取得單筆日誌詳情",
+      "method": "get",
+      "endpoint": "worklogs/:id",
+      "responses": [
+        {
+          "uuid": "363e10fa-1e5b-43d9-9528-6bc46b10fa78",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"logNo\": \"WD202607180001\",\n    \"logDate\": \"2026-07-18\",\n    \"shiftType\": {\n      \"id\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"正常班\",\n      \"description\": \"08:00-12:00, 13:00-17:30\"\n    },\n    \"status\": \"SUBMITTED\",\n    \"selfRead\": true,\n    \"totalHours\": 8.0,\n    \"submittedAt\": \"2026-07-18T09:00:00Z\",\n    \"createdAt\": \"2026-07-18T01:00:00Z\",\n    \"updatedAt\": \"2026-07-18T09:00:00Z\",\n    \"workItems\": [\n      {\n        \"id\": \"d3f4a5b6-0003-4a1a-9f2a-0f1e2d3c4b5a\",\n        \"seq\": 1,\n        \"taskName\": \"月結報表撰寫\",\n        \"description\": \"完成 7 月份營運資料彙整與分析\",\n        \"hours\": 8.0,\n        \"progress\": 100\n      }\n    ]\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 已送出日誌 (b1e2c3d4-0002)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4c94bcf9-4ee7-42aa-b80c-7389a3fbe3f8",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"{{urlParam 'id'}}\",\n    \"logNo\": \"WD202607200002\",\n    \"logDate\": \"2026-07-20\",\n    \"shiftType\": {\n      \"id\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"正常班\",\n      \"description\": \"08:00-12:00, 13:00-17:30\"\n    },\n    \"status\": \"DRAFT\",\n    \"selfRead\": false,\n    \"totalHours\": 4.5,\n    \"submittedAt\": null,\n    \"createdAt\": \"2026-07-20T01:02:03Z\",\n    \"updatedAt\": \"2026-07-20T01:10:00Z\",\n    \"workItems\": [\n      {\n        \"id\": \"d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n        \"seq\": 1,\n        \"taskName\": \"系統需求訪談\",\n        \"description\": \"與臨床單位討論工作日誌欄位\",\n        \"hours\": 2.5,\n        \"progress\": 100\n      },\n      {\n        \"id\": \"d3f4a5b6-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n        \"seq\": 2,\n        \"taskName\": \"API 合約撰寫\",\n        \"description\": null,\n        \"hours\": 2.0,\n        \"progress\": 50\n      }\n    ]\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 草稿日誌 (b1e2c3d4-0001)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "fd0362c3-4dca-4700-b6ab-1d378ee01aa9",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "404 - 查無此日誌",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "56ceb319-0b5a-4b3e-afab-36a0f2b79bd0",
+      "type": "http",
+      "documentation": "更新日誌基本資訊（僅限 DRAFT）",
+      "method": "put",
+      "endpoint": "worklogs/:id",
+      "responses": [
+        {
+          "uuid": "aeb50cbb-bd12-4217-be41-bbdfca41e17d",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"僅能編輯草稿狀態的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "400 - 非 DRAFT 狀態拒絕編輯 (b1e2c3d4-0002)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "14fefbe3-85f0-4fc7-932d-37651aee6b34",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"{{urlParam 'id'}}\",\n    \"logNo\": \"WD202607200002\",\n    \"logDate\": \"{{body 'logDate' '2026-07-20'}}\",\n    \"shiftType\": {\n      \"id\": \"{{body 'shiftTypeId' 'c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a'}}\",\n      \"name\": \"正常班\",\n      \"description\": \"08:00-12:00, 13:00-17:30\"\n    },\n    \"status\": \"DRAFT\",\n    \"selfRead\": {{#if (body 'selfRead')}}{{body 'selfRead'}}{{else}}true{{/if}},\n    \"totalHours\": 4.5,\n    \"submittedAt\": null,\n    \"createdAt\": \"2026-07-20T01:02:03Z\",\n    \"updatedAt\": \"{{now}}\",\n    \"workItems\": []\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 成功更新草稿日誌 (b1e2c3d4-0001)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "30267bc9-b8e1-4e82-9efd-160f0a235560",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "404 - 查無此日誌",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "id",
+              "value": "99999999-9999-9999-9999-999999999999",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "0991cf07-9faf-4d20-9a7e-6859a8335f64",
+      "type": "http",
+      "documentation": "刪除草稿日誌",
+      "method": "delete",
+      "endpoint": "worklogs/:id",
+      "responses": [
+        {
+          "uuid": "9ca1ab1c-e794-4d8e-9edc-55c3c108a7ae",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"僅能刪除草稿狀態的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "400 - 非 DRAFT 狀態拒絕刪除 (b1e2c3d4-0002)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "0dcfdd36-efd3-4a1f-a36c-ffdfcbcf596b",
+          "body": "{\n  \"success\": true,\n  \"data\": null,\n  \"message\": \"刪除成功\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 刪除成功 (預設回應)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "b360aa12-6e24-4551-868f-78b01169f8c5",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "404 - 查無此日誌",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "id",
+              "value": "99999999-9999-9999-9999-999999999999",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "a2fb398f-3648-458b-b8ee-67e1e2c8fc04",
+      "type": "http",
+      "documentation": "送出日誌 (DRAFT -> SUBMITTED)",
+      "method": "post",
+      "endpoint": "worklogs/:id/submit",
+      "responses": [
+        {
+          "uuid": "d38bb1fa-2aa7-4028-a400-f9ebf107380f",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"{{urlParam 'id'}}\",\n    \"logNo\": \"WD202607200002\",\n    \"status\": \"SUBMITTED\",\n    \"submittedAt\": \"{{now}}\"\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 成功送出日誌 (僅限 b1e2c3d4-0001 或 b1e2c3d4-0003)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "8bf71a8f-ff1b-4171-aa3b-85311e4df6a9",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"此日誌已送出，無法重複送出\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "400 - 重複送出錯誤 (b1e2c3d4-0002)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "a1229f99-4749-42ef-815b-dcfa409439a2",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "id",
+              "value": "99999999-9999-9999-9999-999999999999",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": [],
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": ""
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "d3fdfaef-4712-474f-a365-cb63f8708786",
+      "type": "http",
+      "documentation": "新增工作細項",
+      "method": "post",
+      "endpoint": "worklogs/:logId/items",
+      "responses": [
+        {
+          "uuid": "7134aa8c-d232-475b-99d7-d7ff7b718919",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"輸入資料有誤\",\n  \"errors\": [\n    {\n      \"field\": \"taskName\",\n      \"message\": \"工作摘要為必填\"\n    },\n    {\n      \"field\": \"hours\",\n      \"message\": \"時數必須大於 0\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "400 - 欄位驗證錯誤 (taskName 為空)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "taskName",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "hours",
+              "value": "^(?:0|-[1-9]\\d*)$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "d50aefba-d4f1-4770-bc62-520e03e42ea2",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"已送出的日誌無法修改工作細項\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "400 - 非 DRAFT 日誌禁止新增細項 (b1e2c3d4-0002)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "fbac89d3-6cb6-4fb4-81e5-1a3b1eeff7fa",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"item\": {\n      \"id\": \"{{guid}}\",\n      \"seq\": 2,\n      \"taskName\": \"{{body 'taskName' 'API 合約撰寫'}}\",\n      \"description\": {{#if (body 'description')}}\"{{body 'description'}}\"{{else}}null{{/if}},\n      \"hours\": {{body 'hours' '2.0'}},\n      \"progress\": {{body 'progress' '50'}}\n    },\n    \"logTotalHours\": 4.5\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "201 - 成功新增細項 (b1e2c3d4-0001 或 b1e2c3d4-0003)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "9edf3a7c-351d-459e-a8f2-b85e3f0dcce3",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "404 - 查無此日誌 (預設回應)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "db378054-f75d-4bf5-b5f6-3df0978f32dc",
+      "type": "http",
+      "documentation": "更新工作細項",
+      "method": "put",
+      "endpoint": "worklogs/:logId/items/:itemId",
+      "responses": [
+        {
+          "uuid": "9bc11fa0-8f92-4fdf-bc21-678096f9bfdd",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"已送出的日誌無法修改工作細項\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "400 - 非 DRAFT 日誌禁止修改細項 (b1e2c3d4-0002)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "20a2ef11-0eb1-460d-85fa-7faaaec7eb77",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"item\": {\n      \"id\": \"{{urlParam 'itemId'}}\",\n      \"seq\": 2,\n      \"taskName\": \"{{body 'taskName' 'API 合約撰寫（含錯誤格式）'}}\",\n      \"description\": {{#if (body 'description')}}\"{{body 'description'}}\"{{else}}null{{/if}},\n      \"hours\": {{body 'hours' '3.0'}},\n      \"progress\": {{body 'progress' '80'}}\n    },\n    \"logTotalHours\": 5.5\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 成功更新細項 (b1e2c3d4-0001 或 b1e2c3d4-0003)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "51d65250-452d-4b00-a111-04afaee38d28",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "404 - 查無此日誌 (預設回應)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "d0b9fb85-eac3-4caa-b987-fa73da2f280f",
+      "type": "http",
+      "documentation": "刪除工作細項",
+      "method": "delete",
+      "endpoint": "worklogs/:logId/items/:itemId",
+      "responses": [
+        {
+          "uuid": "60ffb6bd-eb04-41d3-bc8e-d9e03d41ce1f",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"已送出的日誌無法修改工作細項\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "400 - 非 DRAFT 日誌禁止刪除細項 (b1e2c3d4-0002)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "99b9cf9c-10aa-43d9-a78b-d7202daecfa7",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"logTotalHours\": 2\n  },\n  \"message\": \"刪除成功\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 刪除成功並回傳最新總時數 (b1e2c3d4-0001 或 b1e2c3d4-0003)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "params",
+              "modifier": "logId",
+              "value": "b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "3d829c9f-361e-4a07-bee6-fabc9a261730",
+          "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "404 - 查無此日誌 (預設回應)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "01334884-d324-4ae0-9c5c-e2e950ca0e23",
+      "type": "http",
+      "documentation": "上傳附件（multipart/form-data）",
+      "method": "post",
+      "endpoint": "worklogs/:logId/attachments",
+      "responses": [
+        {
+          "uuid": "7ce8e6ad-cc87-426a-baf4-047c9e27506f",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"{{guid}}\",\n    \"fileName\": \"需求訪談記錄.pdf\",\n    \"fileSize\": 1048576,\n    \"contentType\": \"application/pdf\",\n    \"uploadedAt\": \"{{now}}\"\n  },\n  \"message\": \"上傳成功\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "201 - 上傳成功",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "a09f8dd2-c016-490b-916f-fe7fc0901925",
+      "type": "http",
+      "documentation": "下載 / 預覽附件",
+      "method": "get",
+      "endpoint": "worklogs/:logId/attachments/:fileId",
+      "responses": [
+        {
+          "uuid": "a4e444aa-1da7-43ab-b23e-4a024fe5e895",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"{{urlParam 'fileId'}}\",\n    \"fileName\": \"需求訪談記錄.pdf\",\n    \"fileSize\": 1048576,\n    \"contentType\": \"application/pdf\",\n    \"downloadUrl\": \"http://localhost:3001/api/worklogs/{{urlParam 'logId'}}/attachments/{{urlParam 'fileId'}}/download\"\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 取得附件下載資訊",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "f5e89416-d7b4-4b90-ac18-35210640a7d5",
+      "type": "http",
+      "documentation": "刪除附件",
+      "method": "delete",
+      "endpoint": "worklogs/:logId/attachments/:fileId",
+      "responses": [
+        {
+          "uuid": "50b79e12-58bc-4a14-b4d5-73d3a3c50033",
+          "body": "{\n  \"success\": true,\n  \"data\": null,\n  \"message\": \"刪除成功\",\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 刪除成功",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "ba7784dd-ba9d-4735-ac67-3f0f610d2909",
+      "type": "http",
+      "documentation": "班別資料",
+      "method": "get",
+      "endpoint": "shift-types",
+      "responses": [
+        {
+          "uuid": "915a5bae-ac15-4416-be4b-58c0bf6bbdaa",
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"正常班\",\n      \"description\": \"08:00-12:00, 13:00-17:30\",\n      \"totalHours\": 8.0\n    },\n    {\n      \"id\": \"c2f3a4b5-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"夜班\",\n      \"description\": \"20:00-08:00\",\n      \"totalHours\": 12.0\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "9fa469d1-34f8-4c3d-b31e-e40673863a2b"
+    },
+    {
+      "type": "folder",
+      "uuid": "ce073eca-3c00-4a12-aafd-b52e6126730b"
+    },
+    {
+      "type": "folder",
+      "uuid": "7b706948-eed0-4716-a17b-8226640839a0"
+    },
+    {
+      "type": "folder",
+      "uuid": "48dc72bb-9fa0-4f49-8fd7-7c28f5faf23b"
+    },
+    {
+      "type": "folder",
+      "uuid": "c7eb4aa1-7121-4ef8-8f75-fce15623b3c2"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

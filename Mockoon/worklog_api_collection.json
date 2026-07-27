@@ -1,0 +1,2385 @@
+{
+  "info": {
+    "name": "WorkLog API Collection",
+    "description": null,
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "工作日誌 (WorkLogs)",
+      "item": [
+        {
+          "name": "取得單筆日誌詳情",
+          "item": [
+            {
+              "name": "取得 SUBMIT 單筆資料",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"logNo\": \"WD202607180001\",\n    \"logDate\": \"2026-07-18\",\n    \"shiftType\": {\n      \"id\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"正常班\",\n      \"description\": \"08:00-12:00, 13:00-17:30\"\n    },\n    \"status\": \"SUBMITTED\",\n    \"selfRead\": true,\n    \"totalHours\": 8.0,\n    \"submittedAt\": \"2026-07-18T09:00:00Z\",\n    \"createdAt\": \"2026-07-18T01:00:00Z\",\n    \"updatedAt\": \"2026-07-18T09:00:00Z\",\n    \"workItems\": [\n      {\n        \"id\": \"d3f4a5b6-0003-4a1a-9f2a-0f1e2d3c4b5a\",\n        \"seq\": 1,\n        \"taskName\": \"月結報表撰寫\",\n        \"description\": \"完成 7 月份營運資料彙整與分析\",\n        \"hours\": 8.0,\n        \"progress\": 100\n      }\n    ]\n  },\n  \"message\": null,\n  \"errors\": null\n}"
+                }
+              ]
+            },
+            {
+              "name": "取得 DRAFT 單筆資料",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"logNo\": \"WD202607200002\",\n    \"logDate\": \"2026-07-20\",\n    \"shiftType\": {\n      \"id\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"正常班\",\n      \"description\": \"08:00-12:00, 13:00-17:30\"\n    },\n    \"status\": \"DRAFT\",\n    \"selfRead\": false,\n    \"totalHours\": 4.5,\n    \"submittedAt\": null,\n    \"createdAt\": \"2026-07-20T01:02:03Z\",\n    \"updatedAt\": \"2026-07-20T01:10:00Z\",\n    \"workItems\": [\n      {\n        \"id\": \"d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n        \"seq\": 1,\n        \"taskName\": \"系統需求訪談\",\n        \"description\": \"與臨床單位討論工作日誌欄位\",\n        \"hours\": 2.5,\n        \"progress\": 100\n      },\n      {\n        \"id\": \"d3f4a5b6-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n        \"seq\": 2,\n        \"taskName\": \"API 合約撰寫\",\n        \"description\": null,\n        \"hours\": 2.0,\n        \"progress\": 50\n      }\n    ]\n  },\n  \"message\": null,\n  \"errors\": null\n}"
+                }
+              ]
+            },
+            {
+              "name": "取得不存在單筆資料",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "impossible"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "impossible"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "更新日誌草稿",
+          "item": [
+            {
+              "name": "更新草稿資料",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"logDate\": \"2026-07-20\",\n  \"shiftTypeId\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n  \"selfRead\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"logDate\": \"2026-07-20\",\n  \"shiftTypeId\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n  \"selfRead\": true\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"logNo\": \"WD202607200002\",\n    \"logDate\": \"2026-07-20\",\n    \"shiftType\": {\n      \"id\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"正常班\",\n      \"description\": \"08:00-12:00, 13:00-17:30\"\n    },\n    \"status\": \"DRAFT\",\n    \"selfRead\": true,\n    \"totalHours\": 4.5,\n    \"submittedAt\": null,\n    \"createdAt\": \"2026-07-20T01:02:03Z\",\n    \"updatedAt\": \"2026-07-27T13:51:02.847+08:00\",\n    \"workItems\": []\n  },\n  \"message\": null,\n  \"errors\": null\n}"
+                }
+              ]
+            },
+            {
+              "name": "更新已送出資料",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"logDate\": \"2026-07-20\",\n  \"shiftTypeId\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n  \"selfRead\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"logDate\": \"2026-07-20\",\n  \"shiftTypeId\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n  \"selfRead\": true\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"僅能編輯草稿狀態的日誌\",\n  \"errors\": null\n}"
+                }
+              ]
+            },
+            {
+              "name": "更新不存在資料",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "impossible"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"logDate\": \"2026-07-20\",\n  \"shiftTypeId\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n  \"selfRead\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "impossible"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"logDate\": \"2026-07-20\",\n  \"shiftTypeId\": \"c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n  \"selfRead\": true\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"找不到指定的日誌\",\n  \"errors\": null\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "取得日誌清單",
+          "item": [
+            {
+              "name": "取得全部清單",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs?year=2026&month=7",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs?year=2026&month=7"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2026"
+                    },
+                    {
+                      "key": "month",
+                      "value": "7"
+                    },
+                    {
+                      "key": "status",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs"
+                      ],
+                      "query": [
+                        {
+                          "key": "year",
+                          "value": "2026"
+                        },
+                        {
+                          "key": "month",
+                          "value": "7"
+                        },
+                        {
+                          "key": "status",
+                          "value": ""
+                        }
+                      ],
+                      "variable": []
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607200002\",\n      \"logDate\": \"2026-07-20\",\n      \"status\": \"DRAFT\",\n      \"summary\": \"系統需求訪談\",\n      \"totalHours\": 4.5\n    },\n    {\n      \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180001\",\n      \"logDate\": \"2026-07-18\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"月結報表撰寫\",\n      \"totalHours\": 8.0\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}"
+                }
+              ]
+            },
+            {
+              "name": "取得 SUBMIT 清單",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs?year=2026&month=7&status=SUBMITTED",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs?year=2026&month=7&status=SUBMITTED"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2026"
+                    },
+                    {
+                      "key": "month",
+                      "value": "7"
+                    },
+                    {
+                      "key": "status",
+                      "value": "SUBMITTED"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs?year=2026&month=7&status=SUBMITTED",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs?year=2026&month=7&status=SUBMITTED"
+                      ],
+                      "query": [
+                        {
+                          "key": "year",
+                          "value": "2026"
+                        },
+                        {
+                          "key": "month",
+                          "value": "7"
+                        },
+                        {
+                          "key": "status",
+                          "value": "SUBMITTED"
+                        }
+                      ],
+                      "variable": []
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180001\",\n      \"logDate\": \"2026-07-18\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"月結報表撰寫\",\n      \"totalHours\": 8.0\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}"
+                }
+              ]
+            },
+            {
+              "name": "取得 DRAFT 清單",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs?year=2026&month=7&status=DRAFT",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs?year=2026&month=7&status=DRAFT"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2026"
+                    },
+                    {
+                      "key": "month",
+                      "value": "7"
+                    },
+                    {
+                      "key": "status",
+                      "value": "DRAFT"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs?year=2026&month=7&status=DRAFT",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs?year=2026&month=7&status=DRAFT"
+                      ],
+                      "query": [
+                        {
+                          "key": "year",
+                          "value": "2026"
+                        },
+                        {
+                          "key": "month",
+                          "value": "7"
+                        },
+                        {
+                          "key": "status",
+                          "value": "DRAFT"
+                        }
+                      ],
+                      "variable": []
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607200002\",\n      \"logDate\": \"2026-07-20\",\n      \"status\": \"DRAFT\",\n      \"summary\": \"系統需求訪談\",\n      \"totalHours\": 4.5\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}"
+                }
+              ]
+            },
+            {
+              "name": "缺少必填資料",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs?status=DRAFT",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs?status=DRAFT"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2026"
+                    },
+                    {
+                      "key": "month",
+                      "value": "7"
+                    },
+                    {
+                      "key": "status",
+                      "value": "DRAFT"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs?year=2026&month=7&status=DRAFT",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs?year=2026&month=7&status=DRAFT"
+                      ],
+                      "query": [
+                        {
+                          "key": "year",
+                          "value": "2026"
+                        },
+                        {
+                          "key": "month",
+                          "value": "7"
+                        },
+                        {
+                          "key": "status",
+                          "value": "DRAFT"
+                        }
+                      ],
+                      "variable": []
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607200002\",\n      \"logDate\": \"2026-07-20\",\n      \"status\": \"DRAFT\",\n      \"summary\": \"系統需求訪談\",\n      \"totalHours\": 4.5\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "刪除草稿日誌",
+          "item": [
+            {
+              "name": "成功刪除日誌",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "刪除已送出日誌",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "刪除不存在日誌",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "impossible"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "送出日誌",
+          "item": [
+            {
+              "name": "成功送出日誌",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id/submit",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id",
+                    "submit"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id/submit",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id",
+                        "submit"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "重複送出日誌",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id/submit",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id",
+                    "submit"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id/submit",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id",
+                        "submit"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "送出不存在日誌",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:id/submit",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":id",
+                    "submit"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "impossible"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:id/submit",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":id",
+                        "submit"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "取得月統計資料",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}/worklogs/stats",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "worklogs",
+                "stats"
+              ],
+              "query": [
+                {
+                  "key": "year",
+                  "value": "2026"
+                },
+                {
+                  "key": "month",
+                  "value": "7"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/stats",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    "stats"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2026"
+                    },
+                    {
+                      "key": "month",
+                      "value": "7"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "新增日誌草稿",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}/worklogs",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "worklogs"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"logNo\": \"WD2026072080003\",\n    \"logDate\": \"2026-07-208\",\n    \"shiftType\": null,\n    \"status\": \"DRAFT\",\n    \"selfRead\": false,\n    \"totalHours\": null,\n    \"submittedAt\": null,\n    \"createdAt\": \"2026-07-27T14:06:38.879+08:00\",\n    \"updatedAt\": \"2026-07-27T14:06:38.879+08:00\",\n    \"workItems\": []\n  },\n  \"message\": null,\n  \"errors\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "工作細項 (WorkItems)",
+      "item": [
+        {
+          "name": "新增工作細項",
+          "item": [
+            {
+              "name": "成功新增細項",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 3,\n  \"progress\": 80\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "201 Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 3,\n  \"progress\": 80\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "新增已送出日誌細項",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 3,\n  \"progress\": 80\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "201 Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 3,\n  \"progress\": 80\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "新增不存在日誌細項",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "impossible"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 3,\n  \"progress\": 80\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "201 Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 3,\n  \"progress\": 80\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "新增零小時細項",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 0,\n  \"progress\": 80\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "201 Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 3,\n  \"progress\": 80\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "新增無標題細項",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskName\": \"\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 8,\n  \"progress\": 80\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "201 Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskName\": \"API 合約撰寫與 Mock 測試\",\n  \"description\": \"使用 Bruno 進行測試\",\n  \"hours\": 3,\n  \"progress\": 80\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "更新工作細項",
+          "item": [
+            {
+              "name": "成功更新細項",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskName\": \"系統需求訪談（已完成）\",\n  \"description\": \"與臨床單位討論工作日誌欄位定案\",\n  \"hours\": 3.5,\n  \"progress\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items",
+                        ":itemId"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        },
+                        {
+                          "key": "itemId",
+                          "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskName\": \"系統需求訪談（已完成）\",\n  \"description\": \"與臨床單位討論工作日誌欄位定案\",\n  \"hours\": 3.5,\n  \"progress\": 100\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "更新已送出日誌細項",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskName\": \"系統需求訪談（已完成）\",\n  \"description\": \"與臨床單位討論工作日誌欄位定案\",\n  \"hours\": 3.5,\n  \"progress\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items",
+                        ":itemId"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        },
+                        {
+                          "key": "itemId",
+                          "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskName\": \"系統需求訪談（已完成）\",\n  \"description\": \"與臨床單位討論工作日誌欄位定案\",\n  \"hours\": 3.5,\n  \"progress\": 100\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "更新不存在日誌細項",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "impossible"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "impossible"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskName\": \"系統需求訪談（已完成）\",\n  \"description\": \"與臨床單位討論工作日誌欄位定案\",\n  \"hours\": 3.5,\n  \"progress\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items",
+                        ":itemId"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        },
+                        {
+                          "key": "itemId",
+                          "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    },
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskName\": \"系統需求訪談（已完成）\",\n  \"description\": \"與臨床單位討論工作日誌欄位定案\",\n  \"hours\": 3.5,\n  \"progress\": 100\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "刪除工作細項",
+          "item": [
+            {
+              "name": "成功刪除細項",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items",
+                        ":itemId"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        },
+                        {
+                          "key": "itemId",
+                          "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "刪除已送出日誌細項",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items",
+                        ":itemId"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        },
+                        {
+                          "key": "itemId",
+                          "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "刪除不存在日誌細項",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "auth": {
+                  "type": "noauth"
+                },
+                "description": "",
+                "url": {
+                  "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "worklogs",
+                    ":logId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "key": "logId",
+                      "value": "impossible"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "impossible"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "200 Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/worklogs/:logId/items/:itemId",
+                      "protocol": "",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "worklogs",
+                        ":logId",
+                        "items",
+                        ":itemId"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "key": "logId",
+                          "value": "b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        },
+                        {
+                          "key": "itemId",
+                          "value": "d3f4a5b6-0001-4a1a-9f2a-0f1e2d3c4b5a"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "認證 (Auth)",
+      "item": [
+        {
+          "name": "取得目前登入者的本地員工資料",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ],
+              "query": [],
+              "variable": []
+            }
+          },
+          "response": [
+            {
+              "name": "200 Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/me",
+                  "protocol": "",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "me"
+                  ],
+                  "query": [],
+                  "variable": []
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"3f1b8b1a-2b3e-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"employeeNo\": \"G033\",\n    \"name\": \"王小明\",\n    \"email\": \"g033@ktgh.org.tw\",\n    \"department\": {\n      \"id\": \"8a2c1e10-1111-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"資訊部\",\n      \"code\": \"IT\"\n    },\n    \"isActive\": true\n  },\n  \"message\": null,\n  \"errors\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件管理",
+      "item": [
+        {
+          "name": "上傳附件",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}/worklogs/:logId/attachments",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "worklogs",
+                ":logId",
+                "attachments"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "logId",
+                  "value": "test"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "取得附件下載資訊",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}/worklogs/:logId/attachments/:fileId",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "worklogs",
+                ":logId",
+                "attachments",
+                ":fileId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "logId",
+                  "value": "test"
+                },
+                {
+                  "key": "fileId",
+                  "value": "test"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "刪除附件",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}/worklogs/:logId/attachments/:fileId",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "worklogs",
+                ":logId",
+                "attachments",
+                ":fileId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "logId",
+                  "value": "test"
+                },
+                {
+                  "key": "fileId",
+                  "value": "test"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "基礎資料",
+      "item": [
+        {
+          "name": "班別資料",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{baseUrl}}/shift-types",
+              "protocol": "",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shift-types"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001/api",
+      "type": "default"
+    },
+    {
+      "key": "baseurl",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
