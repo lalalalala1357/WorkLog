@@ -1,5 +1,11 @@
 import { useParams , useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import type { WorkItem ,ApiResponse } from "../features/worklog/types/WorkLog";
+import { EditLogActions } from "../features/worklog/components/EditLogActions";
+import { BasicInfoSection } from "../features/worklog/components/BasicInfoSection";
+import { WorkItemsSection } from "../features/worklog/components/WorkItemsSection";
+import { SelfReadCheckbox } from "../features/worklog/components/SelfReadCheckbox";
 import 
 { 
     useGetWorkLog,
@@ -7,9 +13,6 @@ import
     useUpdateWorkLog,
     useSubmitWorkLog,
 } from "../features/worklog/hooks/useWorkLogs";
-import { useEffect, useState } from "react";
-import type { WorkItem ,ApiResponse } from "../features/worklog/types/WorkLog";
-import { Button } from "../components/ui/button";
 
 export default function EditLogPage()
 {
@@ -150,44 +153,28 @@ export default function EditLogPage()
                 編輯工作日誌
             </h1>
 
-            <div className="flex gap-2">
-                <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => {
-                        navigate("/dashboard");
-                    }}
-                >
-                    取消
-                </Button>
+            <EditLogActions
+                onCancel={() => {
+                    navigate("/dashboard");
+                }}
 
-                <Button
-                    type="button"
-                    variant="secondary"
-                    onClick={handleSaveDraft}
-                    disabled={
-                        isReadOnly ||
-                        updateLog.isPending ||
-                        !shiftTypeId
-                    }
-                >
-                    {updateLog.isPending
-                        ? "儲存中..."
-                        : "儲存草稿"}
-                </Button>
+                onSaveDraft={handleSaveDraft}
+                onSubmit={handleSubmit}
+                isSaveDisabled={
+                    isReadOnly ||
+                    updateLog.isPending ||
+                    !shiftTypeId
+                }
 
-                <Button
-                    type="button"
-                    onClick={handleSubmit}
-                    disabled={
-                        isReadOnly ||
-                        !selfRead ||
-                        submitLog.isPending
-                    }
-                >
-                    {submitLog.isPending ? "送出中..." : "送出"}
-                </Button>
-            </div>
+                isSubmitDisabled={
+                    isReadOnly ||
+                    !selfRead ||
+                    submitLog.isPending
+                }
+
+                isSaving={updateLog.isPending}
+                isSubmitting={submitLog.isPending}
+            />
 
             {submitErrorMessage && (
                 <p
@@ -197,175 +184,30 @@ export default function EditLogPage()
                     {submitErrorMessage}
                 </p>
             )}
+            {/*移到BasicInfoSection 日期/班別*/}
+            <BasicInfoSection
+                logDate={data.logDate}
+                shiftTypeId={shiftTypeId}
+                shiftTypes={shiftTypes}
+                isReadOnly={isReadOnly}
+                onShiftTypeChange={setShiftTypeId}
+            />
 
-            <section className="mt-6 grid gap-4 md:grid-cols-2">
-                <label className="grid gap-2">
-                    <span className="text-sm font-medium">
-                        日期
-                    </span>
+            {/*移到WorkItemsSection 工作細項 新增/合計/細項列表*/}
+            <WorkItemsSection
+                workItems={workItems}
+                totalHours={totalHours}
+                isReadOnly={isReadOnly}
+                onAdd={handleAddWorkItem}
+                onChange={handleWorkItemChange}
+                onRemove={handleRemoveWorkItem}
+            />
 
-                    <input
-                        type="date"
-                        value={data.logDate}
-                        readOnly
-                        className="rounded-md border bg-muted px-3 py-2"
-                    />
-                </label>
-
-                <label className="grid gap-2">
-                    <span className="text-sm font-medium">
-                        班別
-                    </span>
-
-                    <select
-                        value={shiftTypeId}
-                        onChange={(event) => {
-                            setShiftTypeId(event.target.value);
-                        }}
-                        disabled={isReadOnly}
-                        className="rounded-md border bg-background px-3 py-2"
-                    >
-                        <option value="">
-                            請選擇班別
-                        </option>
-
-                        {shiftTypes.map((shiftType) => (
-                            <option
-                                key={shiftType.id}
-                                value={shiftType.id}
-                            >
-                                {shiftType.name}
-                            </option> 
-                        ))}
-                    </select>
-                </label>
-            </section>
-
-            <section className="mt-8 space-y-4">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h2 className="text-xl font-semibold">
-                            工作細項
-                        </h2>
-                        
-                        <p className="text-sm text-muted-foreground">
-                            合計:{totalHours} 小時
-                        </p>
-                    </div>
-                    <Button
-                        type="button"
-                        onClick={handleAddWorkItem}
-                        disabled={isReadOnly}
-                    >
-                        ＋新增工作細項
-                    </Button>
-                </div>
-
-                <div className="space-y-4">
-                    {workItems.map((item) => (
-                        <div
-                            key={item.id}
-                            className="grid gap-3 rounded-lg border p-4 md:grid-cols-12"
-                        >
-                            <input
-                                value={item.taskName}
-                                onChange={(event) => {
-                                    handleWorkItemChange(
-                                        item.id,
-                                        {
-                                            taskName:event.target.value,
-                                        },
-                                    );
-                                }}
-                                disabled={isReadOnly}
-                                placeholder="工作名稱"
-                                className="rounded-md border px-3 py-2 md:col-span-3"
-                            />
-
-                            <input
-                                value={item.description ?? ""}
-                                onChange={(event) => {
-                                    handleWorkItemChange(
-                                        item.id,
-                                        {
-                                            description:event.target.value,
-                                        },
-                                    );
-                                }}
-                                disabled={isReadOnly}
-                                placeholder="工作說明"
-                                className="rounded-md border px-3 py-2 md:col-span-4"
-                            />
-
-                            <input
-                                type="number"
-                                min="0"
-                                step="0.5"
-                                value={item.hours}
-                                onChange={(event) => {
-                                    handleWorkItemChange(
-                                        item.id,
-                                        {
-                                            hours:
-                                                Number(
-                                                    event.target.value,
-                                                ) || 0,
-                                        },
-                                    );
-                                }}
-                                disabled={isReadOnly}
-                                aria-label="工時"
-                                className="rounded-md border px-3 py-2 md:col-span-2"
-                            />
-
-                            <input
-                                type="number"
-                                min="0"
-                                max="100"
-                                value={item.progress}
-                                onChange={(event) => {
-                                    handleWorkItemChange(
-                                        item.id,
-                                        {
-                                            progress:
-                                                Number(event.target.value
-                                            ) || 0,
-                                        },
-                                    );
-                                }}
-                                disabled={isReadOnly}
-                                aria-label="進度"
-                                className="rounded-md border px-3 py-2 md:col-span-2"
-                            />
-
-                            <Button
-                                type="button"
-                                variant="destructive"
-                                disabled={isReadOnly}
-                                onClick={() => {
-                                    handleRemoveWorkItem(item.id);
-                                }}
-                                className="md:col-span-1"
-                            >
-                                刪除
-                            </Button>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <label className="mt-6 flex items-center gap-2">
-                <input
-                    type="checkbox"
-                    checked={selfRead}
-                    disabled={isReadOnly}
-                    onChange={(event) => {
-                        setSelfRead(event.target.checked)
-                    }}
-                />
-
-                <span>本人已閱讀</span>
-            </label>
+            <SelfReadCheckbox
+                checked={selfRead}
+                disabled={isReadOnly}
+                onCheckedChange={setSelfRead}
+            />
         </main>
     );
 }

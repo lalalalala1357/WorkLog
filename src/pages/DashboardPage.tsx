@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useCreateLog , useDeleteLog , useGetMyLogs } from "../features/worklog/hooks/useWorkLogs";
 import { WorkLogTable } from "../features/worklog/components/WorkLogTable";
 import { useNavigate } from "react-router-dom";
-
+import { DashboardHeader } from "../features/worklog/components/DashboardHeader";
+import { DashboardFilters } from "../features/worklog/components/DashboardFilters";
 export default function DashboardPage()
 {
     const { logout } = useAuth();
@@ -71,9 +72,9 @@ export default function DashboardPage()
 
     return (
         <main className="p-6">
-            <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-semibold">工作日誌</h1>
-                
+            <DashboardHeader onLogout={logout} />
+
+            <div className="mt-6 flex justify-end">
                 <Button
                     type="button"
                     onClick={handleCreateLog}
@@ -83,43 +84,15 @@ export default function DashboardPage()
                         ? "建立中..."
                         : "＋新增今日日誌"}
                 </Button>
-                
-                <Button variant = "outline" onClick={() => logout()}>
-                    登出
-                </Button>
             </div>
 
-            <select
-                aria-label="年份"
-                value={year}
-                onChange={(event) => {
-                    setYear(Number(event.target.value));
-                }}
-                className="mt-6 rounded-md border bg-background px-3 py-2"
-            >
-                <option value={2025}>2025 年</option>
-                <option value={2026}>2026 年</option>
-                <option value={2027}>2027 年</option>
-            </select>
-
-            <select
-                aria-label="月份"
-                value={month}
-                onChange={(event) => {
-                    setMonth(Number(event.target.value));
-                }}
-                className="ml-2 rounded-md border bg-background px-3 py-2"
-            >
-                {Array.from({length:12},(_, index) => {
-                    const value = index + 1;
-
-                    return(
-                        <option key={value} value={value}>
-                            {value} 月
-                        </option>
-                    );
-                })}
-            </select>
+            {/*年/月選單 移到 DashboardFilters.tsx*/}
+            <DashboardFilters
+                year={year}
+                month={month}
+                onYearChange={setYear}
+                onMonthChange={setMonth}
+            />
 
             {data?.length === 0 && (
                 <p className="mt-6 text-muted-foreground">
