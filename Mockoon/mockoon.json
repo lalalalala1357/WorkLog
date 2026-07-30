@@ -227,7 +227,7 @@
         },
         {
           "uuid": "4ae20cfa-133a-4467-932d-20ddcb10d8a5",
-          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607200002\",\n      \"logDate\": \"2026-07-20\",\n      \"status\": \"DRAFT\",\n      \"summary\": \"系統需求訪談\",\n      \"totalHours\": 4.5\n    },\n    {\n      \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180001\",\n      \"logDate\": \"2026-07-18\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"月結報表撰寫\",\n      \"totalHours\": 8.0\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}",
+          "body": "{\n  \"success\": true,\n  \"data\": [],\n  \"message\": null,\n  \"errors\": null\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "200 - 所有狀態 (預設回應)",
@@ -241,6 +241,74 @@
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "aa0cbdcc-defa-470e-9854-7b085ea2beea",
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607200001\",\n      \"logDate\": \"2026-07-20\",\n      \"status\": \"DRAFT\",\n      \"summary\": \"系統需求訪談\",\n      \"totalHours\": 4.5\n    },\n    {\n      \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180002\",\n      \"logDate\": \"2026-07-18\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"月結報表撰寫\",\n      \"totalHours\": 8.0\n    },\n    {\n      \"id\": \"b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180003\",\n      \"logDate\": \"2026-07-22\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"週結報表撰寫\",\n      \"totalHours\": 8.0\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 2026年 7月",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "year",
+              "value": "2026",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "month",
+              "value": "7",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "02da431d-389d-4a05-842e-0c1aef458e8c",
+          "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"b1e2c3d4-0001-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607200002\",\n      \"logDate\": \"2026-06-10\",\n      \"status\": \"DRAFT\",\n      \"summary\": \"系統需求訪談\",\n      \"totalHours\": 4.5\n    },\n    {\n      \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180001\",\n      \"logDate\": \"2026-06-14\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"六月結報表撰寫\",\n      \"totalHours\": 8.0\n    },\n    {\n      \"id\": \"b1e2c3d4-0002-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"logNo\": \"WD202607180003\",\n      \"logDate\": \"2026-06-19\",\n      \"status\": \"SUBMITTED\",\n      \"summary\": \"週結報表撰寫\",\n      \"totalHours\": 8.0\n    }\n  ],\n  \"message\": null,\n  \"errors\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 2026年 6月",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "year",
+              "value": "2026",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "query",
+              "modifier": "month",
+              "value": "6",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
           "crudKey": "id",
           "callbacks": []
         }
