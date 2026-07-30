@@ -15,3 +15,58 @@ export interface ApiResponse<T>
     message: string | null;
     errors: unknown[] | null;
 }
+
+export interface CreateWorkLog
+{
+    id: string;
+    logNo: string;
+    logDate: string;
+    status: "DRAFT";
+}
+
+export interface ShiftType
+{
+    id: string;
+    name: string;
+    description: string | null;
+}
+
+export interface WorkItem
+{
+    id: string;
+    seq: number;
+    taskName: string;
+    description: string | null;
+    hours: number;
+    progress: number;
+}
+
+export interface WorkLogDetail
+{
+    id: string;
+    logNo: string;
+    logDate: string;
+    shiftType: ShiftType | null;
+    status: "DRAFT" | "SUBMITTED";
+    selfRead: boolean;
+    totalHours: number | null;
+    submittedAt: string | null;
+    createdAt: string;
+    updatedAt: string;
+    workItems: WorkItem[];
+}
+
+export interface UpdateWorkLogRequest
+{
+    logDate:string;
+    shiftTypeId:string;
+    selfRead:boolean;
+}
+
+export interface SubmitWorkLogResponse
+{
+    id: string;
+    logNo: string;
+    status: "SUBMITTED";
+    submittedAt: string;
+}

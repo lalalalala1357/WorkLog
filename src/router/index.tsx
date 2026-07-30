@@ -3,6 +3,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import CallbackPage from "../pages/CallbackPage";
 import SilentCallbackPage from "../pages/SilentCallbackPage";
 import DashboardPage from "../pages/DashboardPage";
+import EditLogPage from "../pages/EditLogPage";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,11 @@ export const router = createBrowserRouter([
             {
                 path:"/dashboard",
                 element: <DashboardPage />,
+            },
+
+            {
+                path:"/logs/:id/edit",
+                element:<EditLogPage />,
             },
 
             {

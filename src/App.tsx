@@ -1,10 +1,10 @@
 //import { useState } from 'react'
-import { useWorkLogs } from "./features/worklog/hooks/useWorkLogs";
+import { useGetMyLogs } from "./features/worklog/hooks/useWorkLogs";
 import { WorkLogTable } from "./features/worklog/components/WorkLogTable";
 
 function App()
 {
-  const {data , isLoading , error} = useWorkLogs(2026,7);
+  const {data , isLoading , error} = useGetMyLogs(2026,7);
 
   if(isLoading)
   {
