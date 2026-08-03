@@ -326,7 +326,7 @@
       "responses": [
         {
           "uuid": "9ddf5e61-a0c4-42b7-8735-ee1ea30c000f",
-          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"logNo\": \"WD{{now 'YYYYMMDD'}}0003\",\n    \"logDate\": \"{{now 'YYYY-MM-DD'}}\",\n    \"shiftType\": null,\n    \"status\": \"DRAFT\",\n    \"selfRead\": false,\n    \"totalHours\": null,\n    \"submittedAt\": null,\n    \"createdAt\": \"{{now}}\",\n    \"updatedAt\": \"{{now}}\",\n    \"workItems\": []\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"logNo\": \"WD{{now 'yyyyMMdd'}}0003\",\n    \"logDate\": \"{{now 'yyyy-MM-dd'}}\",\n    \"shiftType\": null,\n    \"status\": \"DRAFT\",\n    \"selfRead\": false,\n    \"totalHours\": null,\n    \"submittedAt\": null,\n    \"createdAt\": \"{{now}}\",\n    \"updatedAt\": \"{{now}}\",\n    \"workItems\": []\n  },\n  \"message\": null,\n  \"errors\": null\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "201 - 成功建立草稿日誌",
@@ -458,6 +458,33 @@
           "default": true,
           "crudKey": "id",
           "callbacks": []
+        },
+        {
+          "uuid": "59d69d74-f181-470b-bd3b-9af1970ce308",
+          "body": "{\r\n  \"success\": true,\r\n  \"data\": {\r\n    \"id\": \"b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a\",\r\n    \"logNo\": \"WD{{now 'yyyyMMdd'}}0003\",\r\n    \"logDate\": \"{{now 'yyyy-MM-dd'}}\",\r\n    \"shiftType\": null,\r\n    \"status\": \"DRAFT\",\r\n    \"selfRead\": false,\r\n    \"totalHours\": null,\r\n    \"submittedAt\": null,\r\n    \"createdAt\": \"{{now}}\",\r\n    \"updatedAt\": \"{{now}}\",\r\n    \"workItems\": []\r\n  },\r\n  \"message\": null,\r\n  \"errors\": null\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 新建立的草稿日誌 (b1e2c3d4-0003)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
         }
       ],
       "responseMode": null,
@@ -549,6 +576,33 @@
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "4ee040c0-c2a3-4d5c-ad06-9367d67eb5e8",
+          "body": "{\r\n  \"success\": true,\r\n  \"data\": {\r\n    \"id\": \"{{urlParam 'id'}}\",\r\n    \"logNo\": \"WD202607300003\",\r\n    \"logDate\": \"{{body 'logDate' '2026-07-30'}}\",\r\n    \"shiftType\": {\r\n      \"id\": \"{{body 'shiftTypeId' 'c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a'}}\",\r\n      \"name\": \"正常班\",\r\n      \"description\": \"08:00-12:00, 13:00-17:30\"\r\n    },\r\n    \"status\": \"DRAFT\",\r\n    \"selfRead\": {{#if (body 'selfRead')}}{{body 'selfRead'}}{{else}}false{{/if}},\r\n    \"totalHours\": null,\r\n    \"submittedAt\": null,\r\n    \"createdAt\": \"{{now}}\",\r\n    \"updatedAt\": \"{{now}}\",\r\n    \"workItems\": []\r\n  },\r\n  \"message\": null,\r\n  \"errors\": null\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "200 - 成功更新新草稿日誌 (b1e2c3d4-0003)",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "b1e2c3d4-0003-4a1a-9f2a-0f1e2d3c4b5a",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
           "crudKey": "id",
           "callbacks": []
         }
