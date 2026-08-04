@@ -23,7 +23,7 @@ export function EditLogActions({
 
 {
     return(
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
                 <Button
                     type="button"
                     variant="outline"
@@ -34,7 +34,7 @@ export function EditLogActions({
 
                 <Button
                     type="button"
-                    variant="secondary"
+                    variant="outline"
                     onClick={onSaveDraft}
                     disabled={isSaveDisabled}
                         

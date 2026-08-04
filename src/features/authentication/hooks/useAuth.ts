@@ -7,6 +7,8 @@ export function useAuth()
     return{
         isAuthenticated: !!user && !user?.expired,
         accessToken: user?.access_token,
+        employeeNo: user?.profile.preferred_username ?? "",
+        employeeName: user?.profile.name ?? "",
         logout: () =>
             userManager.signoutRedirect(
                 user?.id_token

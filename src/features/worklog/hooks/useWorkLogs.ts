@@ -55,7 +55,9 @@ export function useUpdateWorkLog()
         updatedLog,
       );
       void queryClient.invalidateQueries({
-        queryKey:["worklogs"],
+        predicate: (query) =>
+          query.queryKey[0] === "worklogs" &&
+          typeof  query.queryKey[1] === "number",
       });
     },
   });

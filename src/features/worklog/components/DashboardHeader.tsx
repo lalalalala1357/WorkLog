@@ -10,7 +10,7 @@ export function DashboardHeader({
 }:DashboardHeaderProps)
 {
     return(
-        <header className="flex items-center justify-between">
+        <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
                 <h1 className="text-2xl font-semibold">
                     工作日誌

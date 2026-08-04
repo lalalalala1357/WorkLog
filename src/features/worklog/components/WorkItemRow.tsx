@@ -22,8 +22,11 @@ export function WorkItemRow({
     return(
         <div
             key={item.id}
-            className="grid gap-3 rounded-lg border p-4 md:grid-cols-12"
+            className="grid gap-3 rounded-[8px] border p-4 md:grid-cols-12"
         >
+            <span className="text-sm font-medium md:hidden">
+                工作摘要<span className="ml-1 text-destructive">*</span>
+            </span>
             <input
                 value={item.taskName}
                 onChange={(event) => {
@@ -35,24 +38,15 @@ export function WorkItemRow({
                     );
                 }}
                 disabled={isReadOnly}
-                placeholder="工作名稱"
-                className="rounded-md border px-3 py-2 md:col-span-3"
+                //required 必填
+                required
+                placeholder="工作摘要"
+                className="rounded-[4px] border px-3 py-2 md:col-span-7"
             />
 
-            <input
-                value={item.description ?? ""}
-                onChange={(event) => {
-                    onChange(
-                        item.id,
-                        {
-                            description:event.target.value,
-                        },
-                    );
-                }}
-                disabled={isReadOnly}
-                placeholder="工作說明"
-                className="rounded-md border px-3 py-2 md:col-span-4"
-            />
+            <span className="text-sm font-medium md:hidden">
+                時數<span className="ml-1 text-destructive">*</span>
+            </span>
 
             <input
                 type="number"
@@ -71,9 +65,14 @@ export function WorkItemRow({
                     );
                 }}
                 disabled={isReadOnly}
-                aria-label="工時"
-                className="rounded-md border px-3 py-2 md:col-span-2"
+                required
+                aria-label="時數"
+                className="rounded-[4px] border px-3 py-2 md:col-span-2"
             />
+
+            <span className="text-sm font-medium md:hidden">
+                完成度（%）
+            </span>
 
             <input
                 type="number"
@@ -92,7 +91,7 @@ export function WorkItemRow({
                 }}
                 disabled={isReadOnly}
                 aria-label="進度"
-                className="rounded-md border px-3 py-2 md:col-span-2"
+                className="rounded-[4px] border px-3 py-2 md:col-span-2"
             />
 
             <Button

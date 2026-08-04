@@ -20,15 +20,14 @@ interface WorkLogTableProps
 export function WorkLogTable({workLogs , onOpen , onDelete } : WorkLogTableProps)
 {
     return (
-        <div>
+        <div className="overflow-x-auto rounded-[8px] border bg-card">
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>日期</TableHead>
-                        <TableHead>日誌編號</TableHead>
-                        <TableHead>工作摘要</TableHead>
-                        <TableHead>工時</TableHead>
                         <TableHead>狀態</TableHead>
+                        <TableHead>日期</TableHead>
+                        <TableHead>工作摘要</TableHead>
+                        <TableHead>總時數</TableHead>
                         <TableHead>操作</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -36,12 +35,20 @@ export function WorkLogTable({workLogs , onOpen , onDelete } : WorkLogTableProps
                 <TableBody>
                     {workLogs.map((log) => (
                         <TableRow key={log.id}>
+
                             <TableCell>
-                                {log.logDate}
+                                <Badge variant="outline"
+                                        className={log.status === "DRAFT"
+                                            ? "border-[#f59e0b] bg-[#f59e0b] text-white"
+                                            : "border-[#1d9e75] bg-[#1d9e75] text-white"
+                                        }
+                                >
+                                    {log.status === "DRAFT" ? "草稿" : "已送出"}
+                                </Badge>
                             </TableCell>
 
                             <TableCell>
-                                {log.logNo}
+                                {log.logDate}
                             </TableCell>
 
                             <TableCell>
@@ -53,20 +60,14 @@ export function WorkLogTable({workLogs , onOpen , onDelete } : WorkLogTableProps
                             </TableCell>
 
                             <TableCell>
-                                <Badge variant={log.status === "DRAFT" ? "secondary" : "outline"}>
-                                    {log.status === "DRAFT" ? "草稿" : "已送出"}
-                                </Badge>
-                            </TableCell>
-
-                            <TableCell>
-
-                                <Button
+                                <div className="flex items-center gap-2">
+                                    <Button
                                     type="button"
                                     size={"sm"}
                                     variant={"outline"}
                                     onClick={() => onOpen?.(log)}
                                 >
-                                    {log.status === "DRAFT" ? "編輯" : "檢視"}
+                                    {log.status === "DRAFT" ? "編輯" : "查看"}
                                 
                                 </Button>
 
@@ -81,6 +82,7 @@ export function WorkLogTable({workLogs , onOpen , onDelete } : WorkLogTableProps
                                 </Button>
 
                                 )}
+                                </div>
                             </TableCell>
                         </TableRow>
                     ))}

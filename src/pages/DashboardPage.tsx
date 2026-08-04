@@ -1,18 +1,22 @@
 import { useAuth } from "../features/authentication/hooks/useAuth";
 import { Button } from "../components/ui/button";
 import { useState } from "react";
-import { useCreateLog , useDeleteLog , useGetMyLogs } from "../features/worklog/hooks/useWorkLogs";
+import { useGetMyLogs } from "../features/worklog/hooks/useWorkLogs";
 import { WorkLogTable } from "../features/worklog/components/WorkLogTable";
 import { useNavigate } from "react-router-dom";
 import { DashboardHeader } from "../features/worklog/components/DashboardHeader";
 import { DashboardFilters } from "../features/worklog/components/DashboardFilters";
+import { useDashboardWorkLogActions } from "../features/worklog/hooks/useDashboardWorkLogActions";
 export default function DashboardPage()
 {
     const { logout } = useAuth();
 
     const navigate = useNavigate();
-    const createLog = useCreateLog();
-    const deleteLog = useDeleteLog();
+    const {
+        handleCreateLog,
+        handleDeleteLog,
+        isCreating,
+    } = useDashboardWorkLogActions();
 
     const today = new Date();
     const [year , setYear] = useState(
@@ -29,33 +33,10 @@ export default function DashboardPage()
         error ,
     }=useGetMyLogs(year , month);
 
-    function handleCreateLog()
-    {
-        createLog.mutate(undefined, {
-            onSuccess: (log) => {
-                navigate(`/logs/${log.id}/edit`);
-            },
-        });
-    }
-
-    function handleDeleteLog(id: string)
-    {
-        const confirmed = window.confirm(
-            "確定要刪除這筆草稿嗎?",
-        );
-
-        if(!confirmed)
-        {
-            return;
-        }
-
-        deleteLog.mutate(id);
-    }
-
     if(isLoading)
     {
         return(
-            <main className="p-6">
+            <main className="mx-auto w-full max-w-7xl p-4 md:p-6">
                 <p>工作日誌載入中...</p>
             </main>
         );
@@ -64,35 +45,33 @@ export default function DashboardPage()
     if(error)
     {
         return(
-            <main className="p-6">
+            <main className="mx-auto w-full max-w-7xl p-4 md:p-6">
                 <p>工作日誌讀取失敗 請稍後再試</p>
             </main>
         );
     }
 
     return (
-        <main className="p-6">
+        <main className="mx-auto w-full max-w-7xl p-4 md:p-6">
             <DashboardHeader onLogout={logout} />
 
-            <div className="mt-6 flex justify-end">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <DashboardFilters
+                    year={year}
+                    month={month}
+                    onYearChange={setYear}
+                    onMonthChange={setMonth}
+                />
                 <Button
                     type="button"
                     onClick={handleCreateLog}
-                    disabled={createLog.isPending}
+                    disabled={isCreating}
                 >
-                    {createLog.isPending
+                    {isCreating
                         ? "建立中..."
                         : "＋新增今日日誌"}
                 </Button>
             </div>
-
-            {/*年/月選單 移到 DashboardFilters.tsx*/}
-            <DashboardFilters
-                year={year}
-                month={month}
-                onYearChange={setYear}
-                onMonthChange={setMonth}
-            />
 
             {data?.length === 0 && (
                 <p className="mt-6 text-muted-foreground">

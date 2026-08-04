@@ -1,3 +1,5 @@
+import { Button } from "../../../components/ui/button";
+
 interface DashboardFiltersProps
 {
     year: number;
@@ -12,39 +14,53 @@ export function DashboardFilters({
     onMonthChange,
 }:DashboardFiltersProps)
 {
+    function handlePreviousMonth()
+    {
+        if(month === 1)
+        {
+            onYearChange(year - 1);
+            onMonthChange(12);
+            return;
+        }
+        onMonthChange(month - 1);
+    }
+
+    function handleNextMonth()
+    {
+        if(month === 12)
+        {
+            onYearChange(year + 1);
+            onMonthChange(1);
+            return;
+        }
+        onMonthChange(month + 1);
+    }
+
     return (
-        <div className="mt-6 flex gap-2">
-            <select
-                aria-label="年份"
-                value={year}
-                onChange={(event) => {
-                    onYearChange(Number(event.target.value));
-                }}
-                className="rounded-md border bg-background px-3 py-2"
+        <div className="flex items-center gap-2">
+            <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                aria-label="上一個月"
+                onClick={handlePreviousMonth}
             >
-                <option value={2025}>2025 年</option>
-                <option value={2026}>2026 年</option>
-                <option value={2027}>2027 年</option>
-            </select>
+                ←
+            </Button>
 
-            <select
-                aria-label="月份"
-                value={month}
-                onChange={(event) => {
-                    onMonthChange(Number(event.target.value));
-                }}
-                className="rounded-md border bg-background px-3 py-2"
+            <p className="min-w-32 text-center font-medium">
+                {year} 年 {month} 月
+            </p>
+
+            <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                aria-label="下一個月"
+                onClick={handleNextMonth}
             >
-                {Array.from({length:12},(_, index) => {
-                    const value = index + 1;
-
-                    return(
-                        <option key={value} value={value}>
-                            {value} 月
-                        </option>
-                    );
-                })}
-            </select>
+                →
+            </Button>
         </div>
     );      
 }

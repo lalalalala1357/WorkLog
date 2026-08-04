@@ -8,6 +8,13 @@ export interface WorkLog
     totalHours: number | null;
 }
 
+export interface WorkLogStats
+{
+    completionRate: number;
+    draftCount: number;
+    submittedCount: number;
+}
+
 export interface ApiResponse<T>
 {
     success: boolean;
@@ -39,6 +46,20 @@ export interface WorkItem
     description: string | null;
     hours: number;
     progress: number;
+}
+
+export interface WorkItemRequest
+{
+    taskName:string;
+    description: string | null;
+    hours: number;
+    progress: number;
+}
+
+export interface WorkItemMutationResponse
+{
+    item: WorkItem;
+    logTotalHours: number;
 }
 
 export interface WorkLogDetail
