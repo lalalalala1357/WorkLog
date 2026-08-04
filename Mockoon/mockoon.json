@@ -108,7 +108,7 @@
       "responses": [
         {
           "uuid": "ccda5113-35da-4418-842b-a9b235a5906e",
-          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"3f1b8b1a-2b3e-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"employeeNo\": \"G033\",\n    \"name\": \"王小明\",\n    \"email\": \"g033@ktgh.org.tw\",\n    \"department\": {\n      \"id\": \"8a2c1e10-1111-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"資訊部\",\n      \"code\": \"IT\"\n    },\n    \"isActive\": true\n  },\n  \"message\": null,\n  \"errors\": null\n}",
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": \"3f1b8b1a-2b3e-4a1a-9f2a-0f1e2d3c4b5a\",\n    \"employeeNo\": \"Y051\",\n    \"name\": \"王小明\",\n    \"email\": \"Y051@ktgh.org.tw\",\n    \"department\": {\n      \"id\": \"8a2c1e10-1111-4a1a-9f2a-0f1e2d3c4b5a\",\n      \"name\": \"資訊部\",\n      \"code\": \"IT\"\n    },\n    \"isActive\": true\n  },\n  \"message\": null,\n  \"errors\": null\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "200 - 成功取得員工資料",
