@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>b4cbefc7-c5df-4cbc-b87c-8ad304a401d8</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Carter" Version="10.0.0" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\Common\Modules.Common.Domains\Modules.Common.Domains.csproj" />
+    <ProjectReference Include="..\Modules\Common\Modules.Common.Features\Modules.Common.Features.csproj" />
+    <ProjectReference Include="..\Modules\Common\Modules.Common.Infrastructure\Modules.Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\WorkLogs\Modules.WorkLogs.Features\Modules.WorkLogs.Features.csproj" />
+    <ProjectReference Include="..\Modules\WorkLogs\Modules.WorkLogs.Infrastructure\Modules.WorkLogs.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

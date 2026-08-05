@@ -1,0 +1,56 @@
+@WorkLog.API.Host_HostAddress = http://localhost:5156
+
+GET {{WorkLog.API.Host_HostAddress}}/healthz
+Accept: application/json
+
+###
+# create
+POST {{WorkLog.API.Host_HostAddress}}/api/worklogs
+Accept: application/json
+
+###
+# get單筆 要換ID
+GET {{WorkLog.API.Host_HostAddress}}/api/worklogs/637d657e-f319-404a-a3c8-0bdd76a3408e
+Accept: application/json
+
+###
+# get單筆 不存在
+GET {{WorkLog.API.Host_HostAddress}}/api/worklogs/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+###
+# get多筆
+GET {{WorkLog.API.Host_HostAddress}}/api/worklogs?year=2026&month=8
+Accept: application/json
+
+###
+# get多筆 錯誤
+GET {{WorkLog.API.Host_HostAddress}}/api/worklogs?year=2026&month=8&status=INVALID
+Accept: application/json
+
+###
+# get全部 沒填年月
+GET {{WorkLog.API.Host_HostAddress}}/api/worklogs
+Accept: application/json
+
+###
+# update
+PUT {{WorkLog.API.Host_HostAddress}}/api/worklogs/2f36622a-6693-4282-8b1a-bdc91162a0c7
+Content-Type: application/json
+Accept: application/json
+
+{
+  "logDate": "2026-08-04",
+  "shiftTypeId": "c2f3a4b5-0001-4a1a-9f2a-0f1e2d3c4b5a",
+  "selfRead": true
+}
+
+###
+# 取得班別
+GET {{WorkLog.API.Host_HostAddress}}/api/shift-types
+Accept: application/json
+
+###
+# delete
+DELETE {{WorkLog.API.Host_HostAddress}}/api/worklogs/637d657e-f319-404a-a3c8-0bdd76a3408e
+Accept: application/json

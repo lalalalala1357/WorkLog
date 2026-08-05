@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/WorkLog.API.Host/WorkLog.API.Host.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Common/">
+    <Project Path="src/Modules/Common/Modules.Common.Domains/Modules.Common.Domains.csproj" />
+    <Project Path="src/Modules/Common/Modules.Common.Features/Modules.Common.Features.csproj" />
+    <Project Path="src/Modules/Common/Modules.Common.Infrastructure/Modules.Common.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/WorkLogs/">
+    <Project Path="src/Modules/WorkLogs/Modules.WorkLogs.Domains/Modules.WorkLogs.Domains.csproj" Id="506b4ec6-f946-421d-9619-da16d9f5aaa8" />
+    <Project Path="src/Modules/WorkLogs/Modules.WorkLogs.Features/Modules.WorkLogs.Features.csproj" Id="79b1a150-6f5a-4455-92ee-b6af5d46c2c3" />
+    <Project Path="src/Modules/WorkLogs/Modules.WorkLogs.Infrastructure/Modules.WorkLogs.Infrastructure.csproj" Id="4cdb5f72-5045-4db8-bda8-e698e9dd5a8b" />
+  </Folder>
+</Solution>
