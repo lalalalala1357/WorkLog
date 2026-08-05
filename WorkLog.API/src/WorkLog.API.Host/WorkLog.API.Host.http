@@ -10,7 +10,7 @@ Accept: application/json
 
 ###
 # get單筆 要換ID
-GET {{WorkLog.API.Host_HostAddress}}/api/worklogs/637d657e-f319-404a-a3c8-0bdd76a3408e
+GET {{WorkLog.API.Host_HostAddress}}/api/worklogs/ebb212f1-72c8-4495-95cd-5c50fdb6aba7
 Accept: application/json
 
 ###
@@ -35,7 +35,7 @@ Accept: application/json
 
 ###
 # update
-PUT {{WorkLog.API.Host_HostAddress}}/api/worklogs/2f36622a-6693-4282-8b1a-bdc91162a0c7
+PUT {{WorkLog.API.Host_HostAddress}}/api/worklogs/ebb212f1-72c8-4495-95cd-5c50fdb6aba7
 Content-Type: application/json
 Accept: application/json
 
@@ -52,5 +52,10 @@ Accept: application/json
 
 ###
 # delete
-DELETE {{WorkLog.API.Host_HostAddress}}/api/worklogs/637d657e-f319-404a-a3c8-0bdd76a3408e
+DELETE {{WorkLog.API.Host_HostAddress}}/api/worklogs/ebb212f1-72c8-4495-95cd-5c50fdb6aba7
+Accept: application/json
+
+###
+# submit
+POST {{WorkLog.API.Host_HostAddress}}/api/worklogs/ebb212f1-72c8-4495-95cd-5c50fdb6aba7/submit
 Accept: application/json
