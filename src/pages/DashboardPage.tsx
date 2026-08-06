@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { DashboardHeader } from "../features/worklog/components/DashboardHeader";
 import { DashboardFilters } from "../features/worklog/components/DashboardFilters";
 import { useDashboardWorkLogActions } from "../features/worklog/hooks/useDashboardWorkLogActions";
+import { getWorkLogStats } from "../features/worklog/utils/getWorkLogStats";
+import { DashboardStats } from "../features/worklog/components/DashboardStats";
 export default function DashboardPage()
 {
     const { logout } = useAuth();
@@ -33,6 +35,12 @@ export default function DashboardPage()
         error ,
     }=useGetMyLogs(year , month);
 
+    const stats = getWorkLogStats(
+        data ?? [],
+        year,
+        month,
+    );
+
     if(isLoading)
     {
         return(
@@ -55,6 +63,8 @@ export default function DashboardPage()
         <main className="mx-auto w-full max-w-7xl p-4 md:p-6">
             <DashboardHeader onLogout={logout} />
 
+            <DashboardStats stats={stats} />
+
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <DashboardFilters
                     year={year}
@@ -62,15 +72,25 @@ export default function DashboardPage()
                     onYearChange={setYear}
                     onMonthChange={setMonth}
                 />
-                <Button
-                    type="button"
-                    onClick={handleCreateLog}
-                    disabled={isCreating}
-                >
-                    {isCreating
-                        ? "建立中..."
-                        : "＋新增今日日誌"}
-                </Button>
+                <div className="flex gap-2">
+                    <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => navigate("/calendar")}
+                    >
+                        月曆視圖
+                    </Button>
+
+                    <Button
+                        type="button"
+                        onClick={handleCreateLog}
+                        disabled={isCreating}
+                    >
+                        {isCreating
+                            ? "建立中..."
+                            : "＋新增今日日誌"}
+                    </Button>
+                </div>
             </div>
 
             {data?.length === 0 && (
