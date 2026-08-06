@@ -36,10 +36,10 @@ export async function createWorkItem(
 export async function deleteWorkItem(
     logId: string,
     itemId: string,
-):Promise<number>
+):Promise<number | null>
 {
     const response =
-        await apiClient.delete<ApiResponse<{logTotalHours: number}>
+        await apiClient.delete<ApiResponse<{logTotalHours: number | null}>
         >(`/worklogs/${logId}/items/${itemId}`,);
 
         return response.data.data.logTotalHours;
