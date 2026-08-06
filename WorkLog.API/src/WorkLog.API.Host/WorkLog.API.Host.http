@@ -10,7 +10,7 @@ Accept: application/json
 
 ###
 # get單筆 要換ID
-GET {{WorkLog.API.Host_HostAddress}}/api/worklogs/ebb212f1-72c8-4495-95cd-5c50fdb6aba7
+GET {{WorkLog.API.Host_HostAddress}}/api/worklogs/a398da4c-e4a3-4456-9790-366358538c28
 Accept: application/json
 
 ###
@@ -57,5 +57,37 @@ Accept: application/json
 
 ###
 # submit
-POST {{WorkLog.API.Host_HostAddress}}/api/worklogs/ebb212f1-72c8-4495-95cd-5c50fdb6aba7/submit
+POST {{WorkLog.API.Host_HostAddress}}/api/worklogs/58b46f7c-94b8-4b2b-8336-e58fb3542f44/submit
+Accept: application/json
+Content-Type: application/json
+
+###
+# 新增工作細項
+POST {{WorkLog.API.Host_HostAddress}}/api/worklogs/00000000-0000-0000-0000-000000000000/items
+Content-Type: application/json
+Accept: application/json
+
+{
+  "taskName": "API 合約撰寫",
+  "description": null,
+  "hours": 2.0,
+  "progress": 50
+}
+
+###
+# 更新工作細項
+PUT {{WorkLog.API.Host_HostAddress}}/api/worklogs/00000000-0000-0000-0000-000000000000/items/00000000-0000-0000-0000-000000000000
+Accept: application/json
+Content-Type: application/json
+
+{
+  "taskName": "合約撰寫（含錯誤格式）",
+  "description": "補上統一錯誤格式範例",
+  "hours": 3.0,
+  "progress": 80
+}
+
+###
+# 刪除工作細項
+DELETE {{WorkLog.API.Host_HostAddress}}/api/worklogs/00000000-0000-0000-0000-000000000000/items/00000000-0000-0000-0000-000000000000
 Accept: application/json
